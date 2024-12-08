@@ -100,13 +100,13 @@ sampling_params = SamplingParams(
 
   
 ds = load_dataset(script_args.dataset_name_or_path, split="train")
-
+ds = ds.remove_columns(["prompt", "responses"])
 def get_prompt(example):
     full_prompt = f"{example['problem']}\nPlease reason step by step, and put your final answer within \\boxed{{}}."        
 
     messages = [
       {"role":"user", "content":full_prompt},
-      {"role":"user", "content":example['ans']},
+      {"role":"assistant", "content":example['response']},
       {"role":"user", "content":example['reflection'] + "\n\nNow please generate a revised step-by-step response by addressing the identified issues while maintaining coherence with the problem statement. Put your final answer within \\boxed{}."},
     ]
     
