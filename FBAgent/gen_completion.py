@@ -131,7 +131,7 @@ completions = []
 used_prompts = []
 gathered_data = []
 for i, output in enumerate(outputs):
-    tmp_data = {"prompt": ds[i]['prompt']], "completions": [out.text for out in output.outputs], "problem": ds[i]['prompt'], "response": ds[i]['response'], "reflection": ds[i]['reflection'], 'gt': ds[i]['gt'], 'idx': ds[i]['idx']}
+    tmp_data = {"gt": ds[i]['gt'], "idx": ds[i]['idx'], "prompt": ds[i]['prompt'], "completions": [out.text for out in output.outputs], "problem": ds[i]['problem'], "response": ds[i]['response'], "reflection": ds[i]['reflection']}
     gathered_data.append(tmp_data)
 
 
